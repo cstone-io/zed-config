@@ -1,0 +1,70 @@
+[
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      // tab management
+      "shift-h": ["workspace::SendKeystrokes", ": tabp enter"],
+      "shift-l": ["workspace::SendKeystrokes", ": tabn enter"],
+      "space x": ["workspace::SendKeystrokes", ": tabc enter"],
+      "space w v": ["workspace::SendKeystrokes", ": vs enter"],
+      "space w s": ["workspace::SendKeystrokes", ": sp enter"],
+      // LSP commands
+      "space l l": ["workspace::SendKeystrokes", ": ll enter"],
+      "space l j": ["workspace::SendKeystrokes", ": cnext enter"],
+      "space l k": ["workspace::SendKeystrokes", ": cprev enter"],
+      "space l f": "editor::Format",
+      "space f o": "file_finder::Toggle"
+    }
+  },
+  {
+    // put key-bindings here if you want them to work in normal & visual mode
+    "context": "VimControl && !menu",
+    "bindings": {
+      "w": "vim::NextSubwordStart",
+      "b": "vim::PreviousSubwordStart",
+      "e": "vim::NextSubwordEnd",
+      "g e": "vim::PreviousSubwordEnd",
+      "g d": "editor::GoToDefinition",
+      "alt-j": ["workspace::SendKeystrokes", "alt-down"],
+      "alt-k": ["workspace::SendKeystrokes", "alt-up"]
+    }
+  },
+  {
+    "context": "vim_mode != normal",
+    "bindings": {
+      "\\": "vim::NormalBefore" // remap jk in insert mode to escape.
+    }
+  },
+  {
+    // put key-bindings here if you want them to work when no editor exists
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Dock || vim_mode == normal",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-shift-h": ["workspace::SwapPaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-shift-l": ["workspace::SwapPaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-shift-k": ["workspace::SwapPaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-shift-j": ["workspace::SwapPaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "shift-a": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "w": "project_panel::CollapseSelectedEntry",
+      "shift-w": "project_panel::CollapseAllEntries",
+      "e": "project_panel::ExpandSelectedEntry"
+    }
+  }
+]
